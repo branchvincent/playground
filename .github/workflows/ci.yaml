@@ -23,8 +23,8 @@ jobs:
           git-user-email: "action@github.com"
           version-file: pyproject.toml
           version-path: tool.poetry.version
-          skip-on-empty: false
-          # output-file: false
+          # skip-on-empty: false
+          output-file: false
 
       - run: |
           cat pyproject.toml
