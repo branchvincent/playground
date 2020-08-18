@@ -25,7 +25,8 @@ jobs:
           version-file: pyproject.toml
           version-path: tool.poetry.version
           output-file: false
-      - run: echo "::set-env name=SHA::$(git rev-parse HEAD)"
+      - name: Set new commit hash
+        run: echo "::set-env name=SHA::$(git rev-parse HEAD)"
       - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.version.outputs.skipped == 'false' }}
