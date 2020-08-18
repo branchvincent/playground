@@ -24,8 +24,8 @@ jobs:
           git-user-email: "action@github.com"
           version-file: pyproject.toml
           version-path: tool.poetry.version
-          # skip-on-empty: false
           output-file: false
+      - run: echo "::set-env name=SHA::$(git rev-parse HEAD)"
       - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.version.outputs.skipped == 'false' }}
@@ -35,27 +35,4 @@ jobs:
           tag_name: ${{ steps.version.outputs.tag }}
           release_name: ${{ steps.version.outputs.tag }}
           body: ${{ steps.version.outputs.clean_changelog }}
-      # - name: Determine new version
-      #   id: version
-      #   uses: mathieudutour/github-tag-action@v4.5
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     dry_run: true
-      # - name: Create tag
-      #   run: |
-      #     VERSION="${{ steps.version.outputs.new_version }}"
-      #     pip install poetry
-      #     poetry version "$VERSION"
-      #     git commit pyproject.toml -m "chore(release): v$VERSION"
-      #     git tag -am "chore(release): v$VERSION" "v$VERSION"
-      #     git push --follow-tags
-      #     echo "::set-env name=SHA::$(git rev-parse HEAD)"
-      # - name: Create GitHub release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: v${{ steps.version.outputs.new_version }}
-      #     release_name: v${{ steps.version.outputs.new_version }}
-      #     body: ${{ steps.version.outputs.changelog }}
-      #     commitish: ${{ env.SHA }}
+          commitish: ${{ env.SHA }}
