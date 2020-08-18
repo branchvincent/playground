@@ -33,6 +33,11 @@ jobs:
           version-path: tool.poetry.version
           output-file: false
 
+      - run: |
+          cat pyproject.toml
+          git status
+          git tag
+
       - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
