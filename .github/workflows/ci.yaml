@@ -15,8 +15,8 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Fetch entire git log
+      # with:
+      #   fetch-depth: 0 # Fetch entire git log
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
