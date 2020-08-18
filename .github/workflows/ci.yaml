@@ -15,23 +15,15 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
-      # with:
-      #   fetch-depth: 0 # Fetch entire git log
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      - name: Configure repo
-        run: |
-          git config --local user.name "GitHub Actions"
-          git config --local user.email "action@github.com"
-
       - name: Semantic Releaser
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-user-name: "GitHub Actions"
+          git-user-email: "action@github.com"
           version-file: pyproject.toml
           version-path: tool.poetry.version
-          output-file: false
+          # output-file: false
 
       - run: |
           cat pyproject.toml
