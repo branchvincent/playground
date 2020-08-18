@@ -37,3 +37,4 @@ jobs:
           release_name: ${{ steps.version.outputs.tag }}
           body: ${{ steps.version.outputs.clean_changelog }}
           commitish: ${{ env.SHA }}
+      - run: echo last step
