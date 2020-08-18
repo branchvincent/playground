@@ -22,8 +22,8 @@ jobs:
           python-version: 3.8
       - name: Configure repo
         run: |
+          git config --local user.name "GitHub Actions"
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
       - name: Determine new version
         id: new-version
         uses: mathieudutour/github-tag-action@v4.5
