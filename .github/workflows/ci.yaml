@@ -30,7 +30,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version-file: pyproject.toml
-          version-path: tool.poetry
+          version-path: tool.poetry.version
           output-file: false
 
       - name: Create Release
