@@ -15,8 +15,9 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
-      - name: Semantic Releaser
+      - name: Bump version
         uses: TriPSs/conventional-changelog-action@v3
+        id: version
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-user-name: "GitHub Actions"
@@ -25,21 +26,15 @@ jobs:
           version-path: tool.poetry.version
           # skip-on-empty: false
           output-file: false
-
-      - run: |
-          cat pyproject.toml
-          git status
-          git tag
-
       - name: Create Release
         uses: actions/create-release@v1
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        if: ${{ steps.version.outputs.skipped == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
+          tag_name: ${{ steps.version.outputs.tag }}
+          release_name: ${{ steps.version.outputs.tag }}
+          body: ${{ steps.version.outputs.clean_changelog }}
       # - name: Determine new version
       #   id: version
       #   uses: mathieudutour/github-tag-action@v4.5
