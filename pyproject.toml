@@ -12,6 +12,7 @@ poethepoet = "^0.7.0"
 pytest = "^6.0.1"
 
 [tool.poe.tasks]
+run = { script = "playground.main:main", help = "Run main" }
 lint = { cmd = "true", help = "Run linters and formatters" }
 test = { cmd = "true", help = "Run tests" }
 
