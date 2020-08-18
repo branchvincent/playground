@@ -48,4 +48,4 @@ jobs:
           tag_name: v${{ steps.new-version.outputs.new_version }}
           release_name: v${{ steps.new-version.outputs.new_version }}
           body: ${{ steps.new-version.outputs.changelog }}
-          commitish ${{ env.SHA }}
+          commitish: ${{ env.SHA }}
