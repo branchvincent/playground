@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "playground"
-version = "0.0.1"
+version = "0.0.2"
 description = ""
 authors = ["Branch Vincent <branchevincent@gmail.com>"]
 
