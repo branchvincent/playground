@@ -1,41 +1,12 @@
 name: CI
-
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
-env:
-  POETRY_VIRTUALENVS_IN_PROJECT: true
-
+on: [push]
 jobs:
   release:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
-      - uses: actions/checkout@v2
-      - name: Bump version
-        uses: TriPSs/conventional-changelog-action@v3
-        id: version
+      - uses: branchvincent/actions/bump@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-user-name: "GitHub Actions"
-          git-user-email: "action@github.com"
+          token: ${{ secrets.GITHUB_TOKEN }}
           version-file: pyproject.toml
           version-path: tool.poetry.version
-          preset: conventionalcommits
-          output-file: false
-      - name: Set new commit hash
-        run: echo "::set-env name=SHA::$(git rev-parse HEAD)"
-      - name: Create Release
-        uses: actions/create-release@v1
-        if: ${{ steps.version.outputs.skipped == 'false' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.version.outputs.tag }}
-          release_name: ${{ steps.version.outputs.tag }}
-          body: ${{ steps.version.outputs.clean_changelog }}
-          commitish: ${{ env.SHA }}
-      - run: echo last step
