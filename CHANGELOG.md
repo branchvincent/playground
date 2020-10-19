@@ -12,18 +12,21 @@
 - again ([fbe7cae](https://github.com/branchvincent/playground/commit/fbe7caea0145e55e52079e0b6b1dfe35b1e1d389))
 - debug ([1102433](https://github.com/branchvincent/playground/commit/11024334f79440b8abb48e9b26dd8833e8b708ee))
 - debug ([c5cdcc1](https://github.com/branchvincent/playground/commit/c5cdcc1bf93982c75b5f63b9ef93673a0564549f))
+- new line
 
 # [0.3.0](https://github.com/branchvincent/playground/compare/v0.2.0...v0.3.0) (2020-08-18)
 
 ### Features
 
 - another one ([0884e5b](https://github.com/branchvincent/playground/commit/0884e5b0cd22e387a027ec1767e8c456a99db242))
+- yeppp
 
 # [0.2.0](https://github.com/branchvincent/playground/compare/v0.1.0...v0.2.0) (2020-08-18)
 
 ### Bug Fixes
 
 - again ([02b296a](https://github.com/branchvincent/playground/commit/02b296a73d7aba8484d747d1ade9af23b55c19a0))
+- change
 
 ### Features
 
