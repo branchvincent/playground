@@ -9,6 +9,6 @@
 
 ## [0.0.2](https://github.com/branchvincent/playground/compare/v0.0.1...v0.0.2) (2020-08-18)
 
-### Bug Fixes
+### Bug Fixes!
 
 - commit ([4efa5a6](https://github.com/branchvincent/playground/commit/4efa5a61bd62e26f79e97c666970e3716fe0eb72))
