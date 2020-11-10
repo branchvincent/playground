@@ -12,6 +12,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
+      - run: yarn cache dir
       # - uses: branchvincent/actions/bump@master
       #   with:
       #     token: ${{ secrets.GITHUB_TOKEN }}
