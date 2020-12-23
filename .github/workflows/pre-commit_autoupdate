@@ -1,0 +1,30 @@
+name: Pre-commit auto-update
+
+on:
+  schedule:
+  - cron: "0 0 * * 0" # every week
+  workflow_dispatch: # to trigger manually
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install pre-commit
+      run: pip install pre-commit
+
+    - run: pre-commit autoupdate
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3.5.2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: chore/pre-commit-autoupdate
+        title: chore(pre-commit): Autoupdate hooks
+        commit-message: chore(pre-commit): Autoupdate hooks
+        body: Update pre-commit hooks to latest versions
+        labels: update
