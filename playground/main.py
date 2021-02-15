@@ -10,3 +10,7 @@ def cli():
 @click.option("-d", "--debug", help="Include debug output.")
 def build(debug):
     """Build production assets."""
+
+
+if __name__ == "__main__":
+    cli()
