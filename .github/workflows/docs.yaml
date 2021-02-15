@@ -24,4 +24,4 @@ jobs:
       - name: Install package
         run: poetry install
       - name: Publish documentation
-        run: poetry run mkdocs gh-deploy
+        run: poetry run mkdocs gh-deploy --force
