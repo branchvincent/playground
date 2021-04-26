@@ -1,5 +1,0 @@
-site_name: Site Name
-theme: readthedocs
-repo_url: https://github.com/branchvincent/playground/
-markdown_extensions:
-    - mkdocs-click
