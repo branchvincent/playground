@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.3.0 (2021-06-11)
+### Feature
+* Testing ([`f15aea2`](https://github.com/branchvincent/playground/commit/f15aea2b212a5dccec334fd1e15e0d3ab720639a))
+
 ## v1.2.5 (2021-06-11)
 ### Fix
 * Testing ([`bade1a7`](https://github.com/branchvincent/playground/commit/bade1a7cce16adc9fe253df31ed3ae727a2b6228))
