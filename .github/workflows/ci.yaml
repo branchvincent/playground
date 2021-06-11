@@ -7,4 +7,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - run: semantic-release publish
+      - run: pip install poetry && poetry install
+      - run: poetry run semantic-release publish -v DEBUG
