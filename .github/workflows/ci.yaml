@@ -8,9 +8,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - run: pip install poetry && poetry install
-      - run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "action@github.com"
-          poetry run semantic-release publish
+      - uses: relekang/python-semantic-release@v7.16.1
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
