@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.2.4 (2021-06-11)
+### Fix
+* Testing ([`47caf1a`](https://github.com/branchvincent/playground/commit/47caf1afc1fd56c52702350438e88b86e97289c5))
+
 ## v1.2.3 (2021-06-11)
 ### Fix
 * Testing ([`5051a90`](https://github.com/branchvincent/playground/commit/5051a906063249550cc79950d32d13d8c785417d))
