@@ -9,7 +9,7 @@ jobs:
       - uses: actions/setup-python@v2
       - run: pip install poetry && poetry install
       - run: |
-          git config --global user.name "GitHub Actions"
+          git config --global user.name "github-actions"
           git config --global user.email "action@github.com"
           poetry run semantic-release publish
         env:
