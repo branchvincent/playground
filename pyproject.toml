@@ -13,8 +13,9 @@ python-semantic-release = "^7.16.1"
 [tool.semantic_release]
 version_variable = "pyproject.toml:version"
 branch = "main"
-upload_to_pypi = false
 build_command = "poetry build"
+upload_to_pypi = false
+changelog_file = ".gitignore"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
