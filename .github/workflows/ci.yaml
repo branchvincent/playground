@@ -7,10 +7,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - run: pip install poetry && poetry install
-      - run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "action@github.com"
-          poetry run semantic-release publish
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v2
+      - run: yarn cache dir
+      # - run: pip install poetry && poetry install
+      # - run: |
+      #     git config --global user.name "github-actions"
+      #     git config --global user.email "action@github.com"
+      #     poetry run semantic-release publish
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
