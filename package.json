@@ -11,7 +11,9 @@
     "semantic-release": "^17.4.3"
   },
   "release": {
-    "branches": "main",
-    "extends": "semantic-release-npm-github-publish"
+    "branches": "main"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
