@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Get changelog
-        run: echo test > .changelog.md
-      - name: Create release
-        run: gh release create ${GITHUB_REF#refs/tags/} -F .changelog.md
+      - name: Publish
+        run: gh release create ${GITHUB_REF#refs/tags/} -n "Test"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -31,9 +29,8 @@ jobs:
       REPO: ghcr.io/${{ github.repository }}
     steps:
       - uses: actions/checkout@v2
-      - name: Login
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-      - name: Build
-        run: docker build -t $REPO:${GITHUB_REF#refs/tags/} .
-      - name: Push
-        run: docker push $REPO:${GITHUB_REF#refs/tags/}
+      - name: Publish
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+          docker build -t $REPO:${GITHUB_REF#refs/tags/} -t $REPO:latest .
+          docker push -a $REPO
