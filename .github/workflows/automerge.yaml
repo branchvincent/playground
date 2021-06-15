@@ -1,6 +1,8 @@
 name: Automerge # https://github.com/dependabot/fetch-metadata
 
-on: pull_request_target
+on:
+  pull_request_target:
+    types: [opened, synchronize, labeled, reopened]
 
 permissions:
   pull-requests: write
