@@ -6,12 +6,12 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-18.04
-    if: ${{ !contains(github.event.head_commit.message, 'ci skip') }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: actions/setup-node@v2
+      - run: docker compose version
       # - name: Semantic Release
       #   uses: cycjimmy/semantic-release-action@v2
       #   with:
