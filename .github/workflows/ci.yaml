@@ -6,13 +6,14 @@ on:
 
 jobs:
   test:
+    continue-on-error: ${{ matrix.experimental }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cmd: [true, false]
+        succeed: [true, false]
         experimental: [true, false]
     steps:
-      - run: ${{ matrix.cmd }}
+      - run: ${{ matrix.succeed }}
         continue-on-error: ${{ matrix.experimental }}
       - run: echo final run
       # - name: Semantic Release
