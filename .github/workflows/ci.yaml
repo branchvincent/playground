@@ -7,11 +7,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cmd: [true, false]
+        experimental: [true, false]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: actions/setup-node@v2
-      - run: docker compose version
+      - run: ${{ matrix.cmd }}
+        continue-on-error: ${{ matrix.experimental }}
       # - name: Semantic Release
       #   uses: cycjimmy/semantic-release-action@v2
       #   with:
