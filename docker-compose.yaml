@@ -50,11 +50,6 @@ services:
     container_name: k3-registry
     ports:
       - 5000:5000
-    healthcheck:
-      test: "wget -q --spider http://localhost:5000/v2"
-      interval: 1s
-      timeout: 5s
-      retries: 30
 
 volumes:
   k3s-server: {}
