@@ -1,0 +1,20 @@
+# https://github.com/googleapis/repo-automation-bots/tree/master/packages/sync-repo-settings
+deleteBranchOnMerge: true
+mergeCommitAllowed: false
+rebaseMergeAllowed: true
+squashMergeAllowed: true
+
+# Rules for branch protection
+branchProtectionRules:
+  - pattern: main
+    isAdminEnforced: false
+    requiredApprovingReviewCount: 1
+    requiresCodeOwnerReviews: false
+    requiresStrictStatusChecks: true
+    requiredStatusCheckContexts:
+      - CI
+
+# List of explicit permissions to add (additive only)
+permissionRules:
+  # - team: team1 # slug
+  #   permission: push # push|pull|admin
