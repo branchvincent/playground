@@ -5,32 +5,9 @@ on:
     branches: ["main"]
 
 jobs:
-  kind:
-    runs-on: ubuntu-latest
+  ci:
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - run: kind create cluster --wait=60s
-      - run: kind delete cluster
-        if: always()
-  k3d:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: brew install k3d
-      - run: k3d cluster create --wait
-      - run: k3d cluster delete
-        if: always()
-  minikube:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: minikube start
-      - run: minikube stop
-        if: always()
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: docker compose up
-      - run: docker compose down
-        if: always()
+      - run: brew update
+      - run: brew install mypy
