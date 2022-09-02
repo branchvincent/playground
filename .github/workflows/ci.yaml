@@ -8,6 +8,4 @@ jobs:
   ci:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: brew update
-      - run: brew install mypy
+      - run: python3 -c "import sys; print(sys.stdin.isatty())"
