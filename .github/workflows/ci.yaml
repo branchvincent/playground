@@ -9,4 +9,5 @@ jobs:
   ci:
     runs-on: macos-latest
     steps:
-      - run: python3 -c "import sys; print(sys.stdin.isatty())"
+      - run: brew install poetry
+      - run: brew test poetry
