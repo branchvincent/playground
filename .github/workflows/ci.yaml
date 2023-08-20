@@ -6,8 +6,11 @@ on:
     branches: ["main"]
 
 jobs:
-  ci:
-    runs-on: macos-latest
+  curl:
+    runs-on: ubuntu-latest
     steps:
-      - run: brew install poetry
-      - run: brew test poetry
+      - run: curl -sL https://install.python-poetry.org | python
+  pipx:
+    runs-on: ubuntu-latest
+    steps:
+      - run: pipx install poetry
