@@ -7,8 +7,8 @@ authors = ["Branch Vincent <branchevincent@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 
-[tool.poetry.dev-dependencies]
-python-semantic-release = "^7.16.1"
+[tool.poetry.group.dev.dependencies]
+python-semantic-release = "^8.0.7"
 
 [tool.semantic_release]
 branch = "main"

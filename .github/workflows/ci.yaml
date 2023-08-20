@@ -6,8 +6,39 @@ on:
     branches: ["main"]
 
 jobs:
-  ci:
-    runs-on: macos-latest
+  pipx:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        cache: ["true", "false"]
+    defaults:
+      run:
+        shell: bash
     steps:
-      - run: brew install poetry
-      - run: brew test poetry
+      - uses: actions/checkout@v3
+      - run: pipx environment
+      - name: Get pipx environment
+        id: pipx
+        run: |
+          echo "VERSION=$(pipx --version)" >> $GITHUB_OUTPUT
+          echo "BIN_DIR=$(pipx environment -v PIPX_BIN_DIR)" >> $GITHUB_OUTPUT
+          echo "LOCAL_VENVS=$(pipx environment -v PIPX_LOCAL_VENVS)" >> $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
+      - name: Cache poetry
+        if: ${{ matrix.cache == 'true' }}
+        uses: actions/cache@v3
+        with:
+          key: ${{ runner.os }}-pipx@${{ steps.pipx.outputs.VERSION }}
+          path: |
+            ${{ steps.pipx.outputs.LOCAL_VENVS }}/poetry/
+            ${{ steps.pipx.outputs.BIN_DIR }}/poetry
+      - run: pipx install poetry
+      - run: which -a poetry
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: poetry
+      - run: poetry install
+      - run: which -a poetry
