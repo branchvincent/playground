@@ -1,0 +1,32 @@
+name: Host SSH session
+
+on:
+  workflow_dispatch:
+    inputs:
+      runs-on:
+        description: OS to run on.
+        type: choice
+        options:
+          - windows-2022
+          - windows-latest
+          - windows-2019
+          - windows-2016
+          - ubuntu-latest
+          - ubuntu-20.04
+          - ubuntu-18.04
+          - macos-11
+          - macos-latest
+          - macos-10.15
+        default: ubuntu-latest
+
+jobs:
+  ngrok:
+    environment: Ngrok
+    runs-on: "${{ github.event.inputs.runs-on }}"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start SSH session
+        uses: luchihoratiu/debug-via-ssh@v1.1
+        with:
+          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+          SSH_PASS: ${{ secrets.SSH_PASS }}
