@@ -11,8 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
     steps:
-      - run: git clone --depth=1 https://github.com/fish-shell/fish-shell /tmp/fish
-      - run: sudo make -C /tmp/fish install Rust_COMPILER=$(which rustc)
-      - run: fish_trace=1 /usr/local/bin/fish -c 'set --show __fish_data_dir'
+      - run: echo /home/linuxbrew/.linuxbrew/bin >> $GITHUB_PATH
+      - run: brew install bilix
+      - run: brew test bilix
