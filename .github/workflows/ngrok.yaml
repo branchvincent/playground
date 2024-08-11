@@ -1,4 +1,4 @@
-name: Host SSH session
+name: Debug SSH
 
 on:
   workflow_dispatch:
@@ -7,16 +7,17 @@ on:
         description: OS to run on.
         type: choice
         options:
-          - windows-2022
-          - windows-latest
-          - windows-2019
-          - windows-2016
-          - ubuntu-latest
-          - ubuntu-20.04
-          - ubuntu-18.04
-          - macos-11
           - macos-latest
-          - macos-10.15
+          - macos-13
+          - macos-12
+          - macos-11
+          - ubuntu-latest
+          - ubuntu-24.04
+          - ubuntu-22.04
+          - ubuntu-20.04
+          - windows-latest
+          - windows-2022
+          - windows-2019
         default: ubuntu-latest
 
 jobs:
